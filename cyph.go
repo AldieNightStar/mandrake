@@ -27,9 +27,11 @@ func Encode(dat []byte, password []byte) []byte {
 	specAdder := byte(r.Int63() % 250)
 
 	var passwordAdd byte
+	var randomByte byte
 	for id, val := range result {
+		randomByte = byte(r.Int63() % 250)
 		passwordAdd = password[id%len(password)]
-		result[id] = val + specAdder + passwordAdd
+		result[id] = val + specAdder + passwordAdd + randomByte
 	}
 
 	return result
@@ -48,9 +50,11 @@ func Decode(dat []byte, password []byte) []byte {
 
 	// Decryption
 	var passwordSub byte
+	var randomByte byte
 	for id, val := range result {
+		randomByte = byte(r.Int63() % 250)
 		passwordSub = password[id%len(password)]
-		result[id] = (val - passwordSub) - specAdder
+		result[id] = ((val - passwordSub) - specAdder) - randomByte
 	}
 
 	// Remove last bytes
