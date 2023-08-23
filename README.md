@@ -3,8 +3,7 @@
 <center><img src="logo.png" width="250px" /></center>
 
 ## Note
-* Allows you to encrypt any byte data
-* Allows you to decrypt any byte data
+* Allows you to encrypt/decrypt any byte data
 * All you need to have is password
 
 ## Install
