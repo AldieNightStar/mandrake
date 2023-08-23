@@ -7,17 +7,20 @@ import (
 )
 
 func main() {
-	dat := mandrake.Encode(
-		[]byte("Hello"),
-		[]byte("pw888"),
-	)
+	PASSWORD := []byte("PASSWORD")
+	DAT := []byte("This is the best solution")
 
-	fmt.Println("WAS:\n======================")
-	fmt.Println(dat)
+	str := mandrake.EncodeBase64(DAT, PASSWORD)
 
-	dat = mandrake.Decode(dat, []byte("pw879"))
+	fmt.Println("B64 Encoded:\n================")
+	fmt.Println(str)
 
-	fmt.Println("BECAME:\n======================")
+	dat, err := mandrake.DecodeBase64(str, PASSWORD)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	fmt.Println("B64 Decoded:\n================")
 	fmt.Println(string(dat))
-
 }
