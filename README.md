@@ -42,5 +42,5 @@ PASSWORD := []byte("The password")
 base64String := mandrake.EncodeBase64(data, PASSWORD)
 
 // Decrypt data
-originalData := mandrake.DecodeBase64(base64String, PASSWORD)
+originalData, err := mandrake.DecodeBase64(base64String, PASSWORD)
 ```
